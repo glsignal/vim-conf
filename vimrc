@@ -6,7 +6,6 @@ filetype plugin indent on
 runtime macros/matchit.vim
 
 set background=dark
-colorscheme solarized
 
 if has('gui_running')
  set guifont=Menlo:h11
@@ -53,8 +52,8 @@ set shiftwidth=2
 " Round indent by a multiple of shiftwidth in indent mode
 set shiftround
 
-set relativenumber
-set numberwidth=3                       " Set line number column width 
+set number
+set numberwidth=3                       " Set line number column width
 
 " WindowAndBufferManagement:
 
@@ -82,9 +81,6 @@ set nohlsearch
 
 " Searches wrap around the end of the file
 set wrapscan
-
-" assume the /g flag on :s substitutions to replace all matches in a line:
-set gdefault
 
 " Tags:
 
@@ -181,7 +177,7 @@ set complete=.,w,b,u,i
 " d	scan current and included files for defined name or macro
 " 	|i_CTRL-X_CTRL-D|
 " ]	tag completion
-" t	same as above 
+" t	same as above
 
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
