@@ -12,9 +12,6 @@ if has('gui_running')
  set antialias
 endif
 
-" Allow vim to hide buffers with changes
-set hidden
-
 " Ignore case in searches
 set ignorecase
 set smartcase
