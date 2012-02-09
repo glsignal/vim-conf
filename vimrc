@@ -179,3 +179,4 @@ set complete=.,w,b,u,i
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 
+set spell spelllang=en_nz
