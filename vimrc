@@ -7,6 +7,11 @@ runtime macros/matchit.vim
 
 set background=dark
 
+" Latex suite
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='pdflatex'
+let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
+
 if has('gui_running')
  set guifont=Menlo:h11
  set antialias
