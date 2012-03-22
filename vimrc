@@ -108,9 +108,9 @@ set statusline+=]
 set statusline+=%h%1*%m%r%w%0* " flag
 set statusline+=%= " right align
 set statusline+=%{ruby_debugger#statusline()}
-set statusline+=%{rvm#statusline()}\ "
-set statusline+=%{fugitive#statusline()}\ "
-set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
+"set statusline+=%{rvm#statusline()}\ "
+"set statusline+=%{fugitive#statusline()}\ "
+set statusline+=%-8.(%l,%c%V%)\ %<%P " offset
 
 function! ToggleFontSize()
   if exists("g:large_font") && g:large_font == 1
