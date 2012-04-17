@@ -159,8 +159,9 @@ let g:ruby_debugger_spec_path = 'rspec'         " set Rspec path
 nnoremap <C-W>V :vertical bo split<CR>
 
 " Setup Supertab, also :SuperTabHelp
-let g:SuperTabDefaultCompletionType = "<c-n>"
-set complete=.,w,b,u,i
+" let g:SuperTabDefaultCompletionType = "<c-n>"
+" let g:SuperTabCtMapping = 0
+" set complete=.,w,b,u,i
 
 " .	scan the current buffer ('wrapscan' is ignored)
 " w	scan buffers from other windows
