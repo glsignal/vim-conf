@@ -186,5 +186,6 @@ set complete=.,w,b,u,i
 
 " Load RSense
 let g:rsenseHome = "~/opt/rsense"
+let g:rsenseUseOmniFunc = 1
 
 set spell spelllang=en_nz

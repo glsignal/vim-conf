@@ -76,3 +76,6 @@
 [submodule "rsense"]
 	path = rsense
 	url = git@github.com:m2ym/rsense.git
+[submodule "bundle/vim-autocomplpop"]
+	path = bundle/vim-autocomplpop
+	url = git@github.com:chrismetcalf/vim-autocomplpop.git
