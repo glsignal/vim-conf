@@ -184,4 +184,7 @@ set complete=.,w,b,u,i
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 
+" Load RSense
+let g:rsenseHome = "~/opt/rsense"
+
 set spell spelllang=en_nz
