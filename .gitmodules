@@ -73,6 +73,3 @@
 [submodule "rsense"]
 	path = rsense
 	url = git@github.com:m2ym/rsense.git
-[submodule "bundle/vim-neocomplcache"]
-	path = bundle/vim-neocomplcache
-	url = git@github.com:Shougo/neocomplcache.git
