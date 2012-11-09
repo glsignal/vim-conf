@@ -73,3 +73,6 @@
 [submodule "rsense"]
 	path = rsense
   url = git://github.com/m2ym/rsense
+[submodule "bundle/vim-nesc"]
+	path = bundle/vim-nesc
+	url = https://github.com/benwh/vim-nesc.git

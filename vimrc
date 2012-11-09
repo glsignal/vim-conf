@@ -187,9 +187,6 @@ nnoremap <C-W>V :vertical bo split<CR>
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 
-" Load RSense
-let g:rsenseHome = "~/opt/rsense"
-" let g:rsenseUseOmniFunc = 1
 
 "" Disable AutoComplPop.
 "let g:acp_enableAtStartup = 0
