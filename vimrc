@@ -9,8 +9,10 @@ set background=dark
 
 " Latex suite
 set grepprg=grep\ -nH\ $*
-let g:tex_flavor='pdflatex'
-let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='pdf,bib'
+" let g:tex_flavor='pdflatex'
+" let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
 
 if has('gui_running')
  set guifont=Menlo:h11

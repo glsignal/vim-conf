@@ -72,3 +72,4 @@
 	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
 [submodule "rsense"]
 	path = rsense
+  url = git://github.com/m2ym/rsense
