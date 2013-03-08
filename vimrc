@@ -292,3 +292,25 @@ nmap <f9> :exec 'vimgrep /\<'.expand('<cword>').'\>/g **/*.xml **/*.java'<CR>
 "for vimgrep next and previous result
 nmap <c-n> :cn<CR>
 nmap <c-p> :cp<CR>
+
+au BufRead,BufNewFile *.md setf markdown
+au BufRead,BufNewFile *.hbs setf html
+
+autocmd User Rails/app/assets/javascripts/*.coffee
+  \ let b:rails_alternate = substitute(
+  \                           substitute(rails#buffer().path(), 'app/assets/', 'spec/', ''),
+  \                           '.coffee', '_spec.coffee', '')
+autocmd User Rails/spec/javascripts/*_spec.coffee
+  \ let b:rails_alternate = substitute(
+  \                           substitute(rails#buffer().path(), 'spec/', 'app/assets/', ''),
+  \                           '_spec.coffee', '.coffee', '')
+
+autocmd User Rails/app/assets/javascripts/*/*.coffee
+  \ let b:rails_alternate = substitute(
+  \                           substitute(rails#buffer().path(), 'app/assets/', 'spec/', ''),
+  \                           '.coffee', '_spec.coffee', '')
+autocmd User Rails/spec/javascripts/*/*_spec.coffee
+  \ let b:rails_alternate = substitute(
+  \                           substitute(rails#buffer().path(), 'spec/', 'app/assets/', ''),
+  \                           '_spec.coffee', '.coffee', '')
+
