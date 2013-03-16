@@ -238,8 +238,7 @@ nnoremap <C-W>V :vertical bo split<CR>
 "
 "" AutoComplPop like behavior.
 ""let g:neocomplcache_enable_auto_select = 1
-"
-"" Shell like behavior(not recommended).
+" "" Shell like behavior(not recommended).
 ""set completeopt+=longest
 ""let g:neocomplcache_enable_auto_select = 1
 ""let g:neocomplcache_disable_auto_complete = 1
@@ -292,6 +291,10 @@ nmap <f9> :exec 'vimgrep /\<'.expand('<cword>').'\>/g **/*.xml **/*.java'<CR>
 "for vimgrep next and previous result
 nmap <c-n> :cn<CR>
 nmap <c-p> :cp<CR>
+
+" Run !rspec on the current file
+nnoremap <silent> <leader>r :exec '!rspec --color %'<CR>
+nnoremap <silent> <leader>R :exec '!rspec --color'<CR>
 
 au BufRead,BufNewFile *.md setf markdown
 au BufRead,BufNewFile *.hbs setf html
