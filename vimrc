@@ -16,7 +16,7 @@ let g:Tex_MultipleCompileFormats='pdf,bib'
 " let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
 
 if has('gui_running')
- set guifont=Menlo:h11
+ set guifont=DejaVu\ Sans\ Mono\ 11
  set antialias
 endif
 
@@ -293,8 +293,7 @@ nmap <c-n> :cn<CR>
 nmap <c-p> :cp<CR>
 
 " Run !rspec on the current file
-nnoremap <silent> <leader>r :exec '!rspec --color %'<CR>
-nnoremap <silent> <leader>R :exec '!rspec --color'<CR>
+nnoremap <silent> <leader>R :exec '!rspec --color %'<CR>
 
 au BufRead,BufNewFile *.md setf markdown
 au BufRead,BufNewFile *.hbs setf html
