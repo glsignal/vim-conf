@@ -20,6 +20,9 @@ if has('gui_running')
  set antialias
 endif
 
+" Reduce the max line length for syntax highlighting
+set synmaxcol=300
+
 " Ignore case in searches
 set ignorecase
 set smartcase
