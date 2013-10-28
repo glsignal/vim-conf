@@ -308,3 +308,12 @@ autocmd User Rails/spec/javascripts/*/*_spec.coffee
   \                           substitute(rails#buffer().path(), 'spec/', 'app/assets/', ''),
   \                           '_spec.coffee', '.coffee', '')
 
+
+"""""""""""""""""""""""
+" Ctrl-P's ignore
+"""""""""""""""""""""""
+set wildignore+=*/spec/reports/**
+set wildignore+=*/bin/**
+set wildignore+=*/tmp/**
+set wildignore+=*/neo4j/**
+set wildignore+=*/solr/**
