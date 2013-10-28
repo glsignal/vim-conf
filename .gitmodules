@@ -55,3 +55,6 @@
 [submodule "bundle/vim-addon-mw-utils"]
 	path = bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils
+[submodule "bundle/vim-golden-ratio"]
+	path = bundle/vim-golden-ratio
+	url = https://github.com/roman/golden-ratio
