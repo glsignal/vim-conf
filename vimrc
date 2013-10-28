@@ -39,6 +39,9 @@ if v:version >= 703
   let &undodir=&directory
 endif
 
+set colorcolumn=80                      " Set a dark grey column
+hi ColorColumn ctermbg=darkgrey
+
 set vb t_vb=                            " Disable visual bell
 set autoread                            " Set to auto read when a file is changed from the outside
 set nobackup                            " Do not create backup files when saving over existing files
@@ -267,25 +270,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 set spell spelllang=en_nz
 
 """""""""""""""""""""""""""""
-" Eclim Settings
-"""""""""""""""""""""""""""""
-"use default Taglist instead of Eclim, avoid problem
-let g:EclimTaglistEnabled=0
-"let g:taglisttoo_disabled = 1 "maybe of the same use of the above command 
-"if the current file is in a Eclipse project, open project tree automatically
-let g:EclimProjectTreeAutoOpen=1
-let g:EclimProjectTreeExpandPathOnOpen=1
-let g:EclimProjectTreeSharedInstance=1  "share tree instance through all tabs
-" use tabnew instead of split for new action
-let g:EclimProjectTreeActions = [ {'pattern': '.*', 'name': 'Tab', 'action': 'tabnew'} ]
-
-"""""""""""""""""""""""""""""
 "for tabn tabp
 "tab navigation like firefox
 """""""""""""""""""""""""""""
-"nmap <C-Left> :tabprevious<CR>
-"nmap <C-Right> :tabnext<CR>
-"nmap <C-t> :tabnew<CR>
+nmap <C-Left> :tabprevious<CR>
+nmap <C-Right> :tabnext<CR>
+nmap <C-t> :tabnew<CR>
 "nmap <C-w> :tabclose<CR> ”not good...
 
 "for current word search for eclim
