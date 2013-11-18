@@ -58,9 +58,6 @@
 [submodule "bundle/vim-golden-ratio"]
 	path = bundle/vim-golden-ratio
 	url = https://github.com/roman/golden-ratio
-[submodule "bundle/vim-numbers"]
-	path = bundle/vim-numbers
-	url = https://github.com/myusuf3/numbers.vim.git
 [submodule "bundle/vim-ctrlp"]
 	path = bundle/vim-ctrlp
 	url = https://github.com/kien/ctrlp.vim

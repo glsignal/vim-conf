@@ -23,6 +23,9 @@ endif
 " Reduce the max line length for syntax highlighting
 set synmaxcol=300
 
+" Lazily redraw the screen
+set lazyredraw
+
 " Ignore case in searches
 set ignorecase
 set smartcase
