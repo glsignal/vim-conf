@@ -119,7 +119,7 @@ set statusline+=%= " right align
 "set statusline+=%{ruby_debugger#statusline()}
 "set statusline+=%{rvm#statusline()}\ "
 set statusline+=%{fugitive#statusline()}\ "
-set statusline+=%-8.(%l,%c%V%)\ %<%P " offset
+"set statusline+=%-8.(%l,%c%V%)\ %<%P " offset
 
 hi statusline ctermbg=darkgray
 
@@ -311,6 +311,12 @@ autocmd User Rails/spec/javascripts/*/*_spec.coffee
   \                           substitute(rails#buffer().path(), 'spec/', 'app/assets/', ''),
   \                           '_spec.coffee', '.coffee', '')
 
+
+" Rspec.vim mappings
+map <leader>t :call RunCurrentSpecFile()<CR>
+map <leader>s :call RunNearestSpec()<CR>
+map <leader>l :call RunLastSpec()<CR>
+map <leader>a :call RunAllSpecs()<CR>
 
 """""""""""""""""""""""
 " Ctrl-P's ignore
