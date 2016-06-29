@@ -118,6 +118,9 @@ set statusline+=[
 set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
 set statusline+=]
 set statusline+=%h%1*%m%r%w%0* " flag
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 set statusline+=%= " right align
 "set statusline+=%{ruby_debugger#statusline()}
 "set statusline+=%{rvm#statusline()}\ "
@@ -320,6 +323,16 @@ map <leader>t :call RunCurrentSpecFile()<CR>
 map <leader>s :call RunNearestSpec()<CR>
 map <leader>l :call RunLastSpec()<CR>
 map <leader>a :call RunAllSpecs()<CR>
+
+"""""""""""""""""""""""
+" Syntastic
+"""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
 
 """""""""""""""""""""""
 " Ctrl-P's ignore
