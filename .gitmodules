@@ -79,3 +79,9 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/vim-phoenix"]
+	path = bundle/vim-phoenix
+	url = https://github.com/avdgaag/vim-phoenix
+[submodule "bundle/vim-elixir"]
+	path = bundle/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir
