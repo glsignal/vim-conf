@@ -153,6 +153,9 @@ let mapleader = ","
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
+" Quick toggle for paste mode
+nnoremap cop :<c-u>set paste!<cr>:set paste?<cr>
+
 " ExitInsertMode: Alternative keybinding
 imap jj <Esc>
 imap kk <Esc>
@@ -276,7 +279,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 "let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-set spell spelllang=en_nz
+set spelllang=en_nz
 
 """""""""""""""""""""""""""""
 "for tabn tabp
@@ -327,6 +330,7 @@ map <leader>a :call RunAllSpecs()<CR>
 """""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
