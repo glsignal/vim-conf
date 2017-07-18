@@ -1,12 +1,15 @@
 call pathogen#infect()
 
 set nocompatible
-syntax on
+syntax enable
 filetype plugin indent on
 runtime macros/matchit.vim
 
-set background=dark
-colorscheme desert
+if (has("termguicolors"))
+set termguicolors
+endif
+
+colorscheme OceanicNext
 
 " Latex suite
 set grepprg=grep\ -nH\ $*
