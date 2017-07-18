@@ -19,16 +19,11 @@ let g:Tex_MultipleCompileFormats='pdf,bib'
 " let g:tex_flavor='pdflatex'
 " let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
 
-if has('gui_running')
- set guifont=DejaVu\ Sans\ Mono\ 11
- set antialias
-endif
-
 " Reduce the max line length for syntax highlighting
 set synmaxcol=300
 
 " Lazily redraw the screen
-set lazyredraw
+" set lazyredraw
 
 " Ignore case in searches
 set ignorecase
@@ -116,40 +111,22 @@ set helpheight=10
 " Always show status bar
 set laststatus=2
 
-set statusline=\ "
-set statusline+=%f\ " file name
-set statusline+=[
-set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
-set statusline+=]
-set statusline+=%h%1*%m%r%w%0* " flag
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%= " right align
-"set statusline+=%{ruby_debugger#statusline()}
-"set statusline+=%{rvm#statusline()}\ "
-set statusline+=%{fugitive#statusline()}\ "
-"set statusline+=%-8.(%l,%c%V%)\ %<%P " offset
+" set statusline=\ "
+" set statusline+=%f\ " file name
+" set statusline+=[
+" set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
+" set statusline+=]
+" set statusline+=%h%1*%m%r%w%0* " flag
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" set statusline+=%= " right align
+" "set statusline+=%{ruby_debugger#statusline()}
+" "set statusline+=%{rvm#statusline()}\ "
+" set statusline+=%{fugitive#statusline()}\ "
+" "set statusline+=%-8.(%l,%c%V%)\ %<%P " offset
 
-hi statusline ctermbg=darkgray
-
-function! ToggleFontSize()
-  if exists("g:large_font") && g:large_font == 1
-    let g:large_font = 0
-    set guifont=Menlo:h11
-  else
-    let g:large_font = 1
-    set guifont=Menlo:h15
-  end
-endfunction
-
-if has("mac") && has('gui_running')
-  " Unmap Apple+S to remap to Esc, then :w<CR>
-  macmenu &File.Save key=<nop>
-  imap <D-s> <Esc>:w<CR>
-  map <D-s> :w<CR>
-  map <D-H> :call ToggleFontSize()<CR>
-end
+" hi statusline ctermbg=darkgray
 
 " Map Leader: Reset from \ to ,
 let mapleader = ","
@@ -182,89 +159,8 @@ let g:ruby_debugger_spec_path = 'rspec'         " set Rspec path
 
 nnoremap <C-W>V :vertical bo split<CR>
 
-" Setup Supertab, also :SuperTabHelp
-" let g:SuperTabDefaultCompletionType = "<c-n>"
-" let g:SuperTabCtMapping = 0
-" set complete=.,w,b,u,i
-
-" .	scan the current buffer ('wrapscan' is ignored)
-" w	scan buffers from other windows
-" b	scan other loaded buffers that are in the buffer list
-" u	scan the unloaded buffers that are in the buffer list
-" U	scan the buffers that are not in the buffer list
-" k	scan the files given with the 'dictionary' option
-" kspell  use the currently active spell checking |spell|
-" k{dict}	scan the file {dict}.  Several "k" flags can be given,
-" 	patterns are valid too.  For example: >
-" 		:set cpt=k/usr/dict/*,k~/spanish
-" <	s	scan the files given with the 'thesaurus' option
-" s{tsr}	scan the file {tsr}.  Several "s" flags can be given, patterns
-" 	are valid too.
-" i	scan current and included files
-" d	scan current and included files for defined name or macro
-" 	|i_CTRL-X_CTRL-D|
-" ]	tag completion
-" t	same as above
-
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
-
-
-"" Disable AutoComplPop.
-"let g:acp_enableAtStartup = 0
-"" Use neocomplcache.
-"let g:neocomplcache_enable_at_startup = 1
-"" Use smartcase.
-"let g:neocomplcache_enable_smart_case = 1
-"" Use camel case completion.
-"let g:neocomplcache_enable_camel_case_completion = 1
-"" Use underbar completion.
-"let g:neocomplcache_enable_underbar_completion = 1
-"" Set minimum syntax keyword length.
-"let g:neocomplcache_min_syntax_length = 3
-"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-"
-"" Define dictionary.
-"let g:neocomplcache_dictionary_filetype_lists = {
-"    \ 'default' : '',
-"    \ 'vimshell' : $HOME.'/.vimshell_hist',
-"    \ 'scheme' : $HOME.'/.gosh_completions'
-"    \ }
-"
-"" Define keyword.
-"if !exists('g:neocomplcache_keyword_patterns')
-"  let g:neocomplcache_keyword_patterns = {}
-"endif
-"let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-"
-"" Plugin key-mappings.
-"imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-"smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-"inoremap <expr><C-g>     neocomplcache#undo_completion()
-"inoremap <expr><C-l>     neocomplcache#complete_common_string()
-"
-"" SuperTab like snippets behavior.
-""imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"
-"" Recommended key-mappings.
-"" <CR>: close popup and save indent.
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-"" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"" <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><C-y>  neocomplcache#close_popup()
-"inoremap <expr><C-e>  neocomplcache#cancel_popup()
-"
-"" AutoComplPop like behavior.
-""let g:neocomplcache_enable_auto_select = 1
-" "" Shell like behavior(not recommended).
-""set completeopt+=longest
-""let g:neocomplcache_enable_auto_select = 1
-""let g:neocomplcache_disable_auto_complete = 1
-""inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
-""inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -273,17 +169,8 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-"" Enable heavy omni completion.
-"if !exists('g:neocomplcache_omni_patterns')
-"  let g:neocomplcache_omni_patterns = {}
-"endif
-"let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-""autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-"let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-"let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-
 set spelllang=en_nz
+set spell
 
 """""""""""""""""""""""""""""
 "for tabn tabp
@@ -294,36 +181,15 @@ nmap <C-Right> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 "nmap <C-w> :tabclose<CR> ”not good...
 
-"for current word search for eclim
-nmap <f9> :exec 'vimgrep /\<'.expand('<cword>').'\>/g **/*.xml **/*.java'<CR>
 "for vimgrep next and previous result
-nmap <c-n> :cn<CR>
-nmap <c-p> :cp<CR>
+nmap <c-Down> :cn<CR>
+nmap <c-Up> :cp<CR>
 
 " Run !rspec on the current file
 nnoremap <silent> <leader>R :exec '!rspec --color %'<CR>
 
 au BufRead,BufNewFile *.md setf markdown
 au BufRead,BufNewFile *.hbs setf html
-
-autocmd User Rails/app/assets/javascripts/*.coffee
-  \ let b:rails_alternate = substitute(
-  \                           substitute(rails#buffer().path(), 'app/assets/', 'spec/', ''),
-  \                           '.coffee', '_spec.coffee', '')
-autocmd User Rails/spec/javascripts/*_spec.coffee
-  \ let b:rails_alternate = substitute(
-  \                           substitute(rails#buffer().path(), 'spec/', 'app/assets/', ''),
-  \                           '_spec.coffee', '.coffee', '')
-
-autocmd User Rails/app/assets/javascripts/*/*.coffee
-  \ let b:rails_alternate = substitute(
-  \                           substitute(rails#buffer().path(), 'app/assets/', 'spec/', ''),
-  \                           '.coffee', '_spec.coffee', '')
-autocmd User Rails/spec/javascripts/*/*_spec.coffee
-  \ let b:rails_alternate = substitute(
-  \                           substitute(rails#buffer().path(), 'spec/', 'app/assets/', ''),
-  \                           '_spec.coffee', '.coffee', '')
-
 
 " Rspec.vim mappings
 map <leader>t :call RunCurrentSpecFile()<CR>
@@ -346,6 +212,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 " Ctrl-P's ignore
 """""""""""""""""""""""
 set wildignore+=*/spec/reports/**
+set wildignore+=*/node_modules/**
+set wildignore+=*/**/*.lock
 set wildignore+=*/bin/**
 set wildignore+=*/tmp/**
 set wildignore+=*/neo4j/**
