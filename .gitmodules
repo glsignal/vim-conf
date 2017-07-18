@@ -88,3 +88,6 @@
 [submodule "bundle/vim-theme-oceanic-next"]
 	path = bundle/vim-theme-oceanic-next
 	url = https://github.com/mhartington/oceanic-next
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline

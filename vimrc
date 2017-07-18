@@ -10,6 +10,7 @@ set termguicolors
 endif
 
 colorscheme OceanicNext
+let g:airline_theme='oceanicnext'
 
 " Latex suite
 set grepprg=grep\ -nH\ $*
