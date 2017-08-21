@@ -185,17 +185,21 @@ nmap <C-t> :tabnew<CR>
 nmap <c-Down> :cn<CR>
 nmap <c-Up> :cp<CR>
 
-" Run !rspec on the current file
-nnoremap <silent> <leader>R :exec '!rspec --color %'<CR>
-
 au BufRead,BufNewFile *.md setf markdown
 au BufRead,BufNewFile *.hbs setf html
 
 " Rspec.vim mappings
-map <leader>t :call RunCurrentSpecFile()<CR>
-map <leader>s :call RunNearestSpec()<CR>
-map <leader>l :call RunLastSpec()<CR>
-map <leader>a :call RunAllSpecs()<CR>
+" Run !rspec on the current file
+"nnoremap <silent> <leader>R :exec '!rspec --color %'<CR>
+let g:rspec_command = "!bundle exec rspec --color {spec}"
+autocmd FileType ruby map <leader>r :call RunCurrentSpecFile()<CR>
+autocmd FileType ruby map <leader>t :call RunCurrentSpecFile()<CR>
+autocmd FileType ruby map <leader>s :call RunNearestSpec()<CR>
+autocmd FileType ruby map <leader>l :call RunLastSpec()<CR>
+autocmd FileType ruby map <leader>a :call RunAllSpecs()<CR>
+
+" Run specs in js files with ,t
+autocmd FileType javascript map <buffer> <leader>t :execute  "!npm test"<CR>
 
 """""""""""""""""""""""
 " Syntastic
