@@ -12,6 +12,9 @@ endif
 colorscheme OceanicNext
 let g:airline_theme='oceanicnext'
 
+" Terraform
+let g:terraform_remap_spacebar=1
+
 " Latex suite
 set grepprg=grep\ -nH\ $*
 let g:Tex_DefaultTargetFormat='pdf'
