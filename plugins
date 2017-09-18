@@ -29,5 +29,6 @@ Plug 'kana/vim-textobj-user'
 Plug 'mhartington/oceanic-next'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-unimpaired'
+Plug 'xolox/vim-session'
 call plug#end()
 " set ft=vim
