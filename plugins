@@ -1,4 +1,4 @@
-call plug#begin('./plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'tomtom/tlib_vim'
