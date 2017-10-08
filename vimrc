@@ -25,6 +25,10 @@ let g:Tex_MultipleCompileFormats='pdf,bib'
 " Reduce the max line length for syntax highlighting
 set synmaxcol=300
 
+" Don't auto restore default session
+let g:session_autoload = 'no'
+let g:session_autosave = 'no'
+
 " Lazily redraw the screen
 " set lazyredraw
 
