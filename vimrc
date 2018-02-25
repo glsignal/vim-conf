@@ -186,3 +186,10 @@ set wildignore+=*/bin/**
 set wildignore+=*/tmp/**
 set wildignore+=*/neo4j/**
 set wildignore+=*/solr/**
+
+"""""""""""""""""""""""
+" ALE configuration
+"""""""""""""""""""""""
+let g:ale_lint_on_text_changed = 'never'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
