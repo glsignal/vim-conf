@@ -2,7 +2,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'vim-syntastic/syntastic'
 Plug 'tomtom/tlib_vim'
 Plug 'mileszs/ack.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -27,5 +26,6 @@ Plug 'mhartington/oceanic-next'
 Plug 'tpope/vim-unimpaired'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+Plug 'w0rp/ale'
 call plug#end()
 " vim:set ft=vim:
