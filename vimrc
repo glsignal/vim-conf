@@ -15,22 +15,12 @@ let g:airline_theme='oceanicnext'
 " Terraform
 let g:terraform_remap_spacebar=1
 
-" Latex suite
-set grepprg=grep\ -nH\ $*
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf,bib'
-" let g:tex_flavor='pdflatex'
-" let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
-
 " Reduce the max line length for syntax highlighting
-set synmaxcol=300
+set synmaxcol=1000
 
 " Don't auto restore default session
 let g:session_autoload = 'no'
 let g:session_autosave = 'no'
-
-" Lazily redraw the screen
-" set lazyredraw
 
 " Ignore case in searches
 set ignorecase
@@ -69,6 +59,7 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+
 " Round indent by a multiple of shiftwidth in indent mode
 set shiftround
 
@@ -115,25 +106,9 @@ set showfulltag
 " Window Heights:
 
 set helpheight=10
+
 " Always show status bar
 set laststatus=2
-
-" set statusline=\ "
-" set statusline+=%f\ " file name
-" set statusline+=[
-" set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
-" set statusline+=]
-" set statusline+=%h%1*%m%r%w%0* " flag
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" set statusline+=%= " right align
-" "set statusline+=%{ruby_debugger#statusline()}
-" "set statusline+=%{rvm#statusline()}\ "
-" set statusline+=%{fugitive#statusline()}\ "
-" "set statusline+=%-8.(%l,%c%V%)\ %<%P " offset
-
-" hi statusline ctermbg=darkgray
 
 " Map Leader: Reset from \ to ,
 let mapleader = ","
@@ -169,13 +144,6 @@ nnoremap <C-W>V :vertical bo split<CR>
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 set spelllang=en_nz
 set spell
 
@@ -207,17 +175,6 @@ autocmd FileType ruby map <leader>a :call RunAllSpecs()<CR>
 
 " Run specs in js files with ,t
 autocmd FileType javascript map <buffer> <leader>t :execute  "!npm test"<CR>
-
-"""""""""""""""""""""""
-" Syntastic
-"""""""""""""""""""""""
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
 
 """""""""""""""""""""""
 " Ctrl-P's ignore
