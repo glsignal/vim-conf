@@ -134,6 +134,10 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Ack for the last search.
 nnoremap <silent> <leader>? :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
 
 " Common setting for ruby debug
 let g:ruby_debugger_default_script = 'script/rails s'
