@@ -22,6 +22,9 @@ set synmaxcol=1000
 let g:session_autoload = 'no'
 let g:session_autosave = 'no'
 
+" Use `co` for quick changing settings
+nmap co =o
+
 " Ignore case in searches
 set ignorecase
 set smartcase
