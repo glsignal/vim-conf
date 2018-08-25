@@ -152,7 +152,7 @@ nnoremap <C-W>V :vertical bo split<CR>
 :match ExtraWhitespace /\s\+$/
 
 set spelllang=en_nz
-set spell
+set nospell
 
 """""""""""""""""""""""""""""
 "for tabn tabp
