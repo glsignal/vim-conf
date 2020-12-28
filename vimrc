@@ -5,29 +5,32 @@ syntax enable
 filetype plugin indent on
 runtime macros/matchit.vim
 
-if (has("termguicolors"))
-set termguicolors
+if has("termguicolors")
+  set termguicolors
 endif
 
 colorscheme OceanicNext
 let g:airline_theme='oceanicnext'
 
-" Terraform
-let g:terraform_remap_spacebar=1
+set spelllang=en_nz " In this house we write NZ English
+set nospell " Don't check spelling by default
 
-" Reduce the max line length for syntax highlighting
-set synmaxcol=1000
+set colorcolumn=80 " Set a dark grey column
+hi ColorColumn ctermbg=darkgrey
+set synmaxcol=200 " Reduce the max line length for syntax highlighting
+set nowrap " Don't wrap lines by default
+set showmatch " Show matching bracket under cursor
+set mat=2 "How many tenths of a second to blink
 
-" Don't auto restore default session
-let g:session_autoload = 'no'
-let g:session_autosave = 'no'
+" Loudly point out trailing whitespace
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
 
-" Use `co` for quick changing settings
-nmap co =o
+" Window Heights
+set helpheight=10
 
-" Ignore case in searches
-set ignorecase
-set smartcase
+" Always show status bar
+set laststatus=2
 
 " Disable all gui options and use console dialogs
 set guioptions=c
@@ -43,9 +46,6 @@ if v:version >= 703
   set undofile
   let &undodir=&directory
 endif
-
-set colorcolumn=80                      " Set a dark grey column
-hi ColorColumn ctermbg=darkgrey
 
 set vb t_vb=                            " Disable visual bell
 set autoread                            " Set to auto read when a file is changed from the outside
@@ -69,13 +69,11 @@ set shiftround
 set number
 set numberwidth=3                       " Set line number column width
 
-" WindowAndBufferManagement:
-
+" WindowAndBufferManagement
 set splitbelow                          " Open new horizontal split windows below current
 set splitright                          " Open new vertical split windows to the right
 
-" WildMenuModeConfig:
-
+" WildMenuModeConfig
 set nowildmenu                         " Disable the wild menu
 set wildmode=list:longest,full         " Better completion
 set wildignore=.svn,CVS,.git           " Ignore VCS files
@@ -85,39 +83,26 @@ set wildignore+=*.pdf                  " Ignore PDF files
 set wildignore+=*.pyc,*.pyo            " Ignore compiled Python files
 set wildignore+=*.fam                  " Ignore compiled Falcon files
 
-" Search:
-
-" show the `best match so far' as search strings are typed:
-set incsearch
-
-" Don't highlight search result.
-set nohlsearch
-
-" Searches wrap around the end of the file
-set wrapscan
-
-" Tags:
-
-" Perform binary tag search (vs linear) in case tags aren't sorted to avoid
-" missing tags
-set notagbsearch
-
-" Show extra information when using tags in insert mode
-set showfulltag
+" Search
+set incsearch                           " Incrementally highlight search match
+set nohlsearch                          " Don't highlight search result.
+set wrapscan                            " Searches wrap around the end of the file
+set ignorecase                          " Ignore case in searches...
+set smartcase                           " ... unless there's an upper case letter
 
 
-" Window Heights:
-
-set helpheight=10
-
-" Always show status bar
-set laststatus=2
+"""""""""""""""""""""""
+" General Key Mappings
+"""""""""""""""""""""""
 
 " Map Leader: Reset from \ to ,
 let mapleader = ","
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
+
+" Use `co` for quick changing settings
+nmap co =o
 
 " Quick toggle for paste mode
 nnoremap cop :<c-u>set paste!<cr>:set paste?<cr>
@@ -126,49 +111,44 @@ nnoremap cop :<c-u>set paste!<cr>:set paste?<cr>
 imap jj <Esc>
 imap kk <Esc>
 
-" Don't wrap lines by default
-set nowrap
-
-set showmatch "Show matching bracets when text indicator is over them
-set mat=2 "How many tenths of a second to blink
-
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
-" Ack for the last search.
-nnoremap <silent> <leader>? :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-cnoreabbrev Ack Ack!
-
-" Common setting for ruby debug
-let g:ruby_debugger_default_script = 'script/rails s'
-let g:ruby_debugger_spec_path = 'rspec'         " set Rspec path
-
-nnoremap <C-W>V :vertical bo split<CR>
-
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace /\s\+$/
-
-set spelllang=en_nz
-set nospell
-
-"""""""""""""""""""""""""""""
-"for tabn tabp
-"tab navigation like firefox
-"""""""""""""""""""""""""""""
-nmap <C-Left> :tabprevious<CR>
-nmap <C-Right> :tabnext<CR>
+" open new tabs wtih ^t
 nmap <C-t> :tabnew<CR>
-"nmap <C-w> :tabclose<CR> ”not good...
 
 "for vimgrep next and previous result
 nmap <c-Down> :cn<CR>
 nmap <c-Up> :cp<CR>
 
+" shortcuts for 3-way merge
+map <Leader>1 :diffget LOCAL<CR>
+map <Leader>2 :diffget BASE<CR>
+map <Leader>3 :diffget REMOTE<CR>
+
+
+"""""""""""""""""""""""
+" Plugin settings
+"""""""""""""""""""""""
+
+" configure ack.vim to use the silver searcher, if present
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+
+
+" Common setting for ruby debug
+let g:ruby_debugger_default_script = 'script/rails s'
+let g:ruby_debugger_spec_path = 'rspec'         " set Rspec path
+
 au BufRead,BufNewFile *.md setf markdown
 au BufRead,BufNewFile *.hbs setf html
+
+
+" Terraform
+let g:terraform_remap_spacebar=1
+
 
 " Rspec.vim mappings
 " Run !rspec on the current file
@@ -180,12 +160,9 @@ autocmd FileType ruby map <leader>s :call RunNearestSpec()<CR>
 autocmd FileType ruby map <leader>l :call RunLastSpec()<CR>
 autocmd FileType ruby map <leader>a :call RunAllSpecs()<CR>
 
-" Run specs in js files with ,t
-autocmd FileType javascript map <buffer> <leader>t :execute  "!npm test"<CR>
 
-"""""""""""""""""""""""
-" Ctrl-P's ignore
-"""""""""""""""""""""""
+
+" Ctrl-P - ignore
 set wildignore+=*/spec/reports/**
 set wildignore+=*/node_modules/**
 set wildignore+=*/**/*.lock
@@ -194,9 +171,12 @@ set wildignore+=*/tmp/**
 set wildignore+=*/neo4j/**
 set wildignore+=*/solr/**
 
-"""""""""""""""""""""""
 " ALE configuration
-"""""""""""""""""""""""
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_set_highlights = 0
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" TypeScript key mapping
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescriptreact nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>

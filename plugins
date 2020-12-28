@@ -1,31 +1,39 @@
 call plug#begin('~/.vim/plugged')
-Plug 'editorconfig/editorconfig-vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-commentary'
-Plug 'tomtom/tlib_vim'
-Plug 'mileszs/ack.vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'roman/golden-ratio'
-Plug 'tpope/vim-markdown'
-Plug 'avdgaag/vim-phoenix'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
+" Misc nice additions to vim's behaviour
 Plug 'tpope/vim-repeat'
-Plug 'thoughtbot/vim-rspec'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'kana/vim-textobj-user'
-Plug 'mhartington/oceanic-next'
 Plug 'tpope/vim-unimpaired'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+
+" Nice ack/grep/ag integration
+Plug 'mileszs/ack.vim'
+
+" Quickly locate files with loose text matching
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Fancy status bar and editor theme
+Plug 'vim-airline/vim-airline'
+Plug 'mhartington/oceanic-next'
+
+" Size split buffers based on which is focused
+Plug 'roman/golden-ratio'
+
+" Automatically configure certain editor behaviours if a .editorconfig file is
+" present
+Plug 'editorconfig/editorconfig-vim'
+
+" Show git diff stats on the side of the buffer
+Plug 'airblade/vim-gitgutter'
+
+" Ruby/Rails
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tpope/vim-rails'
+Plug 'thoughtbot/vim-rspec'
+
+" TypeScript
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 Plug 'w0rp/ale'
+
 call plug#end()
 " vim:set ft=vim:
