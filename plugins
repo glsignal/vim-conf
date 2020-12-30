@@ -30,8 +30,9 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'tpope/vim-rails'
 Plug 'thoughtbot/vim-rspec'
 
-" TypeScript
+" JavaScript/TypeScript
 Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'Quramy/tsuquyomi'
 Plug 'w0rp/ale'
 
