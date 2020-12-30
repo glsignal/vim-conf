@@ -9,8 +9,15 @@ if has("termguicolors")
   set termguicolors
 endif
 
-colorscheme OceanicNext
-let g:airline_theme='oceanicnext'
+" let g:rehash256 = 1
+colorscheme palenight
+let g:airline_theme='palenight'
+
+if &term =~ '256color'
+  " Disable Background Color Erase (BCE) so that color schemes
+  " work properly when Vim is used inside tmux and GNU screen.
+  set t_ut=
+endif
 
 set spelllang=en_nz " In this house we write NZ English
 set nospell " Don't check spelling by default

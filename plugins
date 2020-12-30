@@ -12,7 +12,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Fancy status bar and editor theme
 Plug 'vim-airline/vim-airline'
-Plug 'mhartington/oceanic-next'
+Plug 'drewtempelmeyer/palenight.vim'
 
 " Size split buffers based on which is focused
 Plug 'roman/golden-ratio'
