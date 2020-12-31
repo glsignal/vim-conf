@@ -184,6 +184,10 @@ nmap ?? :Rg!<CR>
 nmap <C-p> :Files!<CR>
 
 
+" Lazygit! https://github.com/jesseduffield/lazygit
+noremap <leader>g :tab term ++close lazygit<CR>
+
+
 " ALE configuration
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_highlights = 0
