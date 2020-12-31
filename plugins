@@ -4,6 +4,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
+" Make the quickfix list editable
+Plug 'stefandtw/quickfix-reflector.vim'
+
 " Fuzzy find
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
