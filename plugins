@@ -4,11 +4,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
+" Fuzzy find
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
 " Nice ack/grep/ag integration
 Plug 'mileszs/ack.vim'
-
-" Quickly locate files with loose text matching
-Plug 'ctrlpvim/ctrlp.vim'
 
 " Fancy status bar and editor theme
 Plug 'vim-airline/vim-airline'

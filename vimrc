@@ -168,8 +168,7 @@ autocmd FileType ruby map <leader>l :call RunLastSpec()<CR>
 autocmd FileType ruby map <leader>a :call RunAllSpecs()<CR>
 
 
-
-" Ctrl-P - ignore
+" Ignore common globs that aren't really helpful most of the time
 set wildignore+=*/spec/reports/**
 set wildignore+=*/node_modules/**
 set wildignore+=*/**/*.lock
@@ -178,11 +177,19 @@ set wildignore+=*/tmp/**
 set wildignore+=*/neo4j/**
 set wildignore+=*/solr/**
 
+
+" FZF
+nmap // :BLines!<CR>
+nmap ?? :Rg!<CR>
+nmap <C-p> :Files!<CR>
+
+
 " ALE configuration
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_highlights = 0
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 
 " TypeScript key mapping
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
