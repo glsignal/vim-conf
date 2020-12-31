@@ -28,6 +28,7 @@ set synmaxcol=200 " Reduce the max line length for syntax highlighting
 set nowrap " Don't wrap lines by default
 set showmatch " Show matching bracket under cursor
 set mat=2 "How many tenths of a second to blink
+set timeoutlen=500 " Time out map sequences slightly quicker
 
 " Loudly point out trailing whitespace
 :highlight ExtraWhitespace ctermbg=red guibg=red
@@ -116,7 +117,6 @@ nnoremap cop :<c-u>set paste!<cr>:set paste?<cr>
 
 " ExitInsertMode: Alternative keybinding
 imap jj <Esc>
-imap kk <Esc>
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
