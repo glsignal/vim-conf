@@ -133,6 +133,10 @@ map <leader>1 :diffget LOCAL<CR>
 map <leader>2 :diffget BASE<CR>
 map <leader>3 :diffget REMOTE<CR>
 
+" Quick map for jumping into pre-filled substitute command
+nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>
+nmap <leader>S :%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>
+
 
 """""""""""""""""""""""
 " Plugin settings
