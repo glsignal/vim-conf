@@ -129,9 +129,9 @@ nmap <c-Down> :cn<CR>
 nmap <c-Up> :cp<CR>
 
 " shortcuts for 3-way merge
-map <Leader>1 :diffget LOCAL<CR>
-map <Leader>2 :diffget BASE<CR>
-map <Leader>3 :diffget REMOTE<CR>
+map <leader>1 :diffget LOCAL<CR>
+map <leader>2 :diffget BASE<CR>
+map <leader>3 :diffget REMOTE<CR>
 
 
 """""""""""""""""""""""
@@ -192,5 +192,5 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 
 " TypeScript key mapping
-autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
-autocmd FileType typescriptreact nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript nmap <buffer> <leader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescriptreact nmap <buffer> <leader>t : <C-u>echo tsuquyomi#hint()<CR>
