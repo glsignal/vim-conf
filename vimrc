@@ -29,6 +29,7 @@ set nowrap " Don't wrap lines by default
 set showmatch " Show matching bracket under cursor
 set mat=2 "How many tenths of a second to blink
 set timeoutlen=500 " Time out map sequences slightly quicker
+set cursorline " highlight the currently focused line
 
 " Loudly point out trailing whitespace
 :highlight ExtraWhitespace ctermbg=red guibg=red
@@ -190,6 +191,10 @@ nmap <C-p> :Files!<CR>
 
 " Lazygit! https://github.com/jesseduffield/lazygit
 noremap <leader>g :tab term ++close lazygit<CR>
+
+
+" Toggle color highlighting (chrisbra/Colorizer)
+noremap <leader>c :ColorToggle<CR>
 
 
 " ALE configuration

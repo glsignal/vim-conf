@@ -40,5 +40,8 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'Quramy/tsuquyomi'
 Plug 'w0rp/ale'
 
+" Show colour previews
+Plug 'chrisbra/Colorizer'
+
 call plug#end()
 " vim:set ft=vim:
