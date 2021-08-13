@@ -2,6 +2,7 @@ source ~/.vim/plugins
 
 set nocompatible
 syntax enable
+filetype plugin on
 filetype plugin indent on
 runtime macros/matchit.vim
 
@@ -30,6 +31,7 @@ set showmatch " Show matching bracket under cursor
 set mat=2 "How many tenths of a second to blink
 set timeoutlen=500 " Time out map sequences slightly quicker
 set cursorline " highlight the currently focused line
+set backspace=indent,eol,start " make backspace work as in most other editors
 
 " Loudly point out trailing whitespace
 :highlight ExtraWhitespace ctermbg=red guibg=red

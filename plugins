@@ -38,7 +38,16 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'Quramy/tsuquyomi'
-Plug 'w0rp/ale'
+
+" Terraform
+Plug 'hashivim/vim-terraform'
+
+" formerly w0rp/ale
+Plug 'dense-analysis/ale'
+
+if has('nvim')
+  Plug 'Shougo/vimproc.vim' " for neovim specifically
+endif
 
 " Show colour previews
 Plug 'chrisbra/Colorizer'
