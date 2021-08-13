@@ -151,13 +151,18 @@ if executable('ag')
 endif
 cnoreabbrev Ack Ack!
 
+" Yanked from Gary. Kill all LSPs if they get confused.
+nnoremap g0 :ALEStopAllLSPs<cr>
+
+" Vim-ale handles TypeScript quickfix, so tell Tsuquyomi not to do it.
+let g:tsuquyomi_disable_quickfix = 1
 
 " Common setting for ruby debug
 let g:ruby_debugger_default_script = 'script/rails s'
 let g:ruby_debugger_spec_path = 'rspec'         " set Rspec path
 
-au BufRead,BufNewFile *.md setf markdown
-au BufRead,BufNewFile *.hbs setf html
+autocmd BufRead,BufNewFile *.md setf markdown
+autocmd BufRead,BufNewFile *.hbs setf html
 
 
 " Terraform
@@ -200,12 +205,24 @@ noremap <leader>c :ColorToggle<CR>
 
 
 " ALE configuration
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_set_highlights = 0
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_set_highlights = 0
+let g:ale_linters = {'javascript': ['prettier'], 'terraform': ['terraform'], 'typescript': ['tsserver', 'eslint'], 'typescriptreact': ['tsserver', 'eslint']}
+let g:ale_fixers = {'javascript': ['prettier'], 'python': ['black'], 'terraform': ['terraform'], 'typescript': ['prettier'], 'typescriptreact': ['prettier']}
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_delay = 0
+let g:ale_set_quickfix = 0
+let g:ale_set_loclist = 0
+let g:ale_javascript_eslint_executable = 'eslint --cache'
+let g:ale_set_signs = 0
+let g:ale_set_highlights = 1
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-
 " TypeScript key mapping
-autocmd FileType typescript nmap <buffer> <leader>t : <C-u>echo tsuquyomi#hint()<CR>
-autocmd FileType typescriptreact nmap <buffer> <leader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript,typescriptreact nmap <buffer> <leader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript,typescriptreact nmap <buffer> <leader>qf : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType javascript,javascriptreact,typescript,typescriptreact nmap <leader>r :!npm run test --findRelatedTests %<CR>
+autocmd FileType javascript,javascriptreact,typescript,typescriptreact nmap <leader>a :!npm run test<CR>
