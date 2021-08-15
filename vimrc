@@ -169,16 +169,6 @@ autocmd BufRead,BufNewFile *.hbs setf html
 let g:terraform_remap_spacebar=1
 
 
-" Rspec.vim mappings
-" Run !rspec on the current file
-"nnoremap <silent> <leader>R :exec '!rspec --color %'<CR>
-let g:rspec_command = "!bundle exec rspec --color {spec}"
-autocmd FileType ruby map <leader>r :call RunCurrentSpecFile()<CR>
-autocmd FileType ruby map <leader>t :call RunCurrentSpecFile()<CR>
-autocmd FileType ruby map <leader>s :call RunNearestSpec()<CR>
-autocmd FileType ruby map <leader>l :call RunLastSpec()<CR>
-autocmd FileType ruby map <leader>a :call RunAllSpecs()<CR>
-
 
 " Ignore common globs that aren't really helpful most of the time
 set wildignore+=*/spec/reports/**
@@ -222,7 +212,25 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " TypeScript key mapping
-autocmd FileType typescript,typescriptreact nmap <buffer> <leader>t : <C-u>echo tsuquyomi#hint()<CR>
-autocmd FileType typescript,typescriptreact nmap <buffer> <leader>qf : <C-u>echo tsuquyomi#hint()<CR>
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact nmap <leader>r :!npm run test --findRelatedTests %<CR>
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact nmap <leader>a :!npm run test<CR>
+autocmd FileType typescript,typescriptreact map <buffer> <leader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript,typescriptreact map <buffer> <leader>f :TsuSignatureHelp<CR>
+autocmd FileType typescript,typescriptreact map <buffer> <leader>qf :TsuQuickFix<CR>
+autocmd FileType typescript,typescriptreact map <buffer> <leader>d :TsuDefinition<CR>
+autocmd FileType typescript,typescriptreact map <buffer> <leader>D :TsuTypeDefinition<CR>
+
+" test runner keymaps
+" Rspec.vim mappings
+" Run !rspec on the current file
+"nnoremap <silent> <leader>R :exec '!rspec --color %'<CR>
+let g:rspec_command = "!bundle exec rspec --color {spec}"
+autocmd FileType ruby map <buffer> <leader>r :call RunCurrentSpecFile()<CR>
+autocmd FileType ruby map <buffer> <leader>a :call RunAllSpecs()<CR>
+autocmd FileType ruby map <buffer> <leader>s :call RunNearestSpec()<CR>
+autocmd FileType ruby map <buffer> <leader>l :call RunLastSpec()<CR>
+
+autocmd FileType javascript,javascriptreact,typescript,typescriptreact map <buffer> <leader>r :!npm run test --findRelatedTests %<CR>
+autocmd FileType javascript,javascriptreact,typescript,typescriptreact map <buffer> <leader>a :!npm run test<CR>
+
+autocmd FileType python map <buffer> <leader>r :!pytest %<CR>
+autocmd FileType python map <buffer> <leader>a :!pytest<CR>
+
