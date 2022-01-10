@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-projectionist'
 
 " Make the quickfix list editable
 Plug 'stefandtw/quickfix-reflector.vim'
@@ -38,6 +39,10 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'Quramy/tsuquyomi'
+
+Plug 'whatyouhide/vim-textobj-xmlattr'
+
+Plug 'vim-test/vim-test'
 
 " Terraform
 Plug 'hashivim/vim-terraform'

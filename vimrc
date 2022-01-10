@@ -197,8 +197,21 @@ noremap <leader>c :ColorToggle<CR>
 " ALE configuration
 " let g:ale_lint_on_text_changed = 'never'
 " let g:ale_set_highlights = 0
-let g:ale_linters = {'javascript': ['prettier'], 'terraform': ['terraform'], 'typescript': ['tsserver', 'eslint'], 'typescriptreact': ['tsserver', 'eslint']}
-let g:ale_fixers = {'javascript': ['prettier'], 'python': ['black'], 'terraform': ['terraform'], 'typescript': ['prettier'], 'typescriptreact': ['prettier']}
+let g:ale_linters = {
+      \ 'javascript': ['prettier'],
+      \ 'terraform': ['terraform'],
+      \ 'typescript': ['tsserver', 'eslint'],
+      \ 'typescriptreact': ['tsserver', 'eslint']
+      \ }
+
+let g:ale_fixers = {
+      \ 'javascript': ['prettier'],
+      \ 'python': ['black'],
+      \ 'terraform': ['terraform'],
+      \ 'typescript': ['prettier'],
+      \ 'typescriptreact': ['prettier']
+      \ }
+
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_delay = 0
@@ -222,15 +235,65 @@ autocmd FileType typescript,typescriptreact map <buffer> <leader>D :TsuTypeDefin
 " Rspec.vim mappings
 " Run !rspec on the current file
 "nnoremap <silent> <leader>R :exec '!rspec --color %'<CR>
-let g:rspec_command = "!bundle exec rspec --color {spec}"
-autocmd FileType ruby map <buffer> <leader>r :call RunCurrentSpecFile()<CR>
-autocmd FileType ruby map <buffer> <leader>a :call RunAllSpecs()<CR>
-autocmd FileType ruby map <buffer> <leader>s :call RunNearestSpec()<CR>
-autocmd FileType ruby map <buffer> <leader>l :call RunLastSpec()<CR>
+" let g:rspec_command = "!bundle exec rspec --color {spec}"
+" autocmd FileType ruby map <buffer> <leader>r :call RunCurrentSpecFile()<CR>
+" autocmd FileType ruby map <buffer> <leader>a :call RunAllSpecs()<CR>
+" autocmd FileType ruby map <buffer> <leader>s :call RunNearestSpec()<CR>
+" autocmd FileType ruby map <buffer> <leader>l :call RunLastSpec()<CR>
+" 
+" autocmd FileType javascript,javascriptreact,typescript,typescriptreact map <buffer> <leader>r :!npm run test --findRelatedTests %<CR>
+" autocmd FileType javascript,javascriptreact,typescript,typescriptreact map <buffer> <leader>a :!npm run test<CR>
+" 
+" autocmd FileType python map <buffer> <leader>r :!pytest %<CR>
+" autocmd FileType python map <buffer> <leader>a :!pytest<CR>
 
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact map <buffer> <leader>r :!npm run test --findRelatedTests %<CR>
-autocmd FileType javascript,javascriptreact,typescript,typescriptreact map <buffer> <leader>a :!npm run test<CR>
+" vim-test/vim-test
+let test#ruby#rspect#executable = "bundle exec rspec --color"
+nmap <leader>tf :TestFile<CR>
+nmap <leader>tn :TestNearest<CR>
+nmap <leader>ta :TestSuite<CR>
+nmap <leader>tl :TestLast<CR>
+nmap <leader>tg :TestVisit<CR>
 
-autocmd FileType python map <buffer> <leader>r :!pytest %<CR>
-autocmd FileType python map <buffer> <leader>a :!pytest<CR>
-
+let g:projectionist_heuristics = {
+    \   "Gemfile": {
+    \     "app/**/*.rb": {
+    \       "type": "source",
+    \       "alternate": "spec/{dirname}/{basename}_spec.rb",
+    \     },
+    \   },
+    \   "package.json": {
+    \     "*.js": {
+    \       "type": "source",
+    \       "alternate": ["{}.test.js", "{}.test.jsx"],
+    \     },
+    \     "*.jsx": {
+    \       "type": "source",
+    \       "alternate": ["{}.test.js", "{}.test.jsx"],
+    \     },
+    \     "*.test.js": {
+    \       "type": "test",
+    \       "alternate": ["{}.js", "{}.jsx"],
+    \     },
+    \     "*.test.jsx": {
+    \       "type": "test",
+    \       "alternate": ["{}.js", "{}.jsx"],
+    \     },
+    \     "*.ts": {
+    \       "type": "source",
+    \       "alternate": ["{}.test.ts", "{}.test.tsx"],
+    \     },
+    \     "*.tsx": {
+    \       "type": "source",
+    \       "alternate": ["{}.test.ts", "{}.test.tsx"],
+    \     },
+    \     "*.test.ts": {
+    \       "type": "test",
+    \       "alternate": ["{}.ts", "{}.tsx"],
+    \     },
+    \     "*.test.tsx": {
+    \       "type": "test",
+    \       "alternate": ["{}.ts", "{}.tsx"],
+    \     },
+    \   }
+    \ }
