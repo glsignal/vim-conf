@@ -1,0 +1,10 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "coc.preferences.jumpCommand": "edit",
+  "coc.preferences.renameFillCurrent": false
+}

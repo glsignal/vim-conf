@@ -9,6 +9,15 @@ if has("termguicolors")
   set termguicolors
 endif
 
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
 if &term =~ '256color'
   " Disable Background Color Erase (BCE) so that color schemes
   " work properly when Vim is used inside tmux and GNU screen.
@@ -19,6 +28,7 @@ set vb t_vb=                            " Disable visual bell
 set spelllang=en_nz
 set nospell
 
+set updatetime=500
 set nowrap                              " Don't wrap lines by default
 set showmatch                           " Show matching bracket under cursor
 set mat=2                               " How many tenths of a second to blink
@@ -26,7 +36,6 @@ set timeoutlen=500                      " Time out map sequences slightly quicke
 set cursorline                          " highlight the currently focused line
 set backspace=indent,eol,start          " make backspace work as in most other editors
 set synmaxcol=200                       " Reduce the max line length for syntax highlighting
-set helpheight=10
 set laststatus=2                        " Always show status bar
 set guioptions=c                        " Disable all gui options and use console dialogs
 
@@ -45,11 +54,8 @@ set numberwidth=3                       " Set line number column width
 set colorcolumn=80                      " Set a dark grey column
 hi ColorColumn ctermbg=darkgrey
 
-" Loudly point out trailing whitespace
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace /\s\+$/
-
-set keywordprg=:help
+" set keywordprg=:help
+set helpheight=10
 
 set autoread                            " Set to auto read when a file is changed from the outside
 set infercase                           " Ignore case on insert completion
@@ -122,41 +128,51 @@ nnoremap <leader>g :tab term ++close lazygit<CR>
 autocmd BufRead,BufNewFile *.md setf markdown
 autocmd BufRead,BufNewFile *.hbs setf html
 
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
 """""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""
 
 call plug#begin('~/.vim/plugged')
 
-source ~/.vim/plugins/repeat.vim
-source ~/.vim/plugins/surround.vim
-source ~/.vim/plugins/unimpaired.vim
-source ~/.vim/plugins/projectionist.vim
-source ~/.vim/plugins/quickfix-reflector.vim
-source ~/.vim/plugins/fzf.vim
+" apply color scheme first, plugins may alter highlights or colours
+source ~/.vim/plugins/palenight.vim
+
 source ~/.vim/plugins/ack.vim
 source ~/.vim/plugins/airline.vim
-source ~/.vim/plugins/palenight.vim
-source ~/.vim/plugins/golden-ratio.vim
-source ~/.vim/plugins/editorconfig.vim
-source ~/.vim/plugins/gitgutter.vim
-source ~/.vim/plugins/textobj-user.vim
-source ~/.vim/plugins/textobj-rubyblock.vim
-source ~/.vim/plugins/textobj-xmlattr.vim
-source ~/.vim/plugins/rails.vim
-" source ~/.vim/plugins/rspec.vim
-source ~/.vim/plugins/typescript.vim
-source ~/.vim/plugins/jsx-pretty.vim
-source ~/.vim/plugins/tsuquyomi.vim
-source ~/.vim/plugins/test.vim
-source ~/.vim/plugins/terraform.vim
-source ~/.vim/plugins/ale.vim
-source ~/.vim/plugins/snippets.vim
+" source ~/.vim/plugins/ale.vim
 source ~/.vim/plugins/colorizer.vim
+source ~/.vim/plugins/editorconfig.vim
+source ~/.vim/plugins/fzf.vim
+source ~/.vim/plugins/gitgutter.vim
+source ~/.vim/plugins/golden-ratio.vim
+source ~/.vim/plugins/jsx-pretty.vim
+source ~/.vim/plugins/coc.vim
+source ~/.vim/plugins/projectionist.vim
+source ~/.vim/plugins/quickfix-reflector.vim
+source ~/.vim/plugins/rails.vim
+source ~/.vim/plugins/repeat.vim
+" source ~/.vim/plugins/rspec.vim
+source ~/.vim/plugins/snippets.vim
+source ~/.vim/plugins/surround.vim
+source ~/.vim/plugins/terraform.vim
+source ~/.vim/plugins/test.vim
+source ~/.vim/plugins/textobj-rubyblock.vim
+source ~/.vim/plugins/textobj-user.vim
+source ~/.vim/plugins/textobj-xmlattr.vim
+" source ~/.vim/plugins/tsuquyomi.vim
+source ~/.vim/plugins/typescript.vim
+source ~/.vim/plugins/unimpaired.vim
 
 if has('nvim')
   source ~/.vim/plugins/vimproc.vim
 endif
 
 call plug#end()
+
 doautocmd User PlugLoaded
+
+" Loudly point out trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
