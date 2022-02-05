@@ -50,6 +50,12 @@ Plug 'hashivim/vim-terraform'
 " formerly w0rp/ale
 Plug 'dense-analysis/ale'
 
+" snippets, who wants to type
+Plug 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+
 if has('nvim')
   Plug 'Shougo/vimproc.vim' " for neovim specifically
 endif

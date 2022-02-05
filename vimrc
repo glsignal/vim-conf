@@ -299,3 +299,9 @@ let g:projectionist_heuristics = {
     \     },
     \   }
     \ }
+
+" Snippets config
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.snippet_version = 1
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['typescript'] = 'typescript,javascript-mocha'
