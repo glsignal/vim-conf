@@ -1,71 +1,58 @@
-source ~/.vim/plugins
-
 set nocompatible
 syntax enable
 filetype plugin on
 filetype plugin indent on
 runtime macros/matchit.vim
+scriptencoding utf-8                    " UTF8 All day, every day
 
 if has("termguicolors")
   set termguicolors
 endif
-
-" let g:rehash256 = 1
-colorscheme palenight
-let g:airline_theme='palenight'
 
 if &term =~ '256color'
   " Disable Background Color Erase (BCE) so that color schemes
   " work properly when Vim is used inside tmux and GNU screen.
   set t_ut=
 endif
+set vb t_vb=                            " Disable visual bell
 
-set spelllang=en_nz " In this house we write NZ English
-set nospell " Don't check spelling by default
+set spelllang=en_nz
+set nospell
 
-set colorcolumn=80 " Set a dark grey column
+set nowrap                              " Don't wrap lines by default
+set showmatch                           " Show matching bracket under cursor
+set mat=2                               " How many tenths of a second to blink
+set timeoutlen=500                      " Time out map sequences slightly quicker
+set cursorline                          " highlight the currently focused line
+set backspace=indent,eol,start          " make backspace work as in most other editors
+set synmaxcol=200                       " Reduce the max line length for syntax highlighting
+set helpheight=10
+set laststatus=2                        " Always show status bar
+set guioptions=c                        " Disable all gui options and use console dialogs
+
+set nobackup                            " Do not create backup files when saving over existing files
+set nowritebackup                       " A little paranoid, but disable the writebackup function as well
+set noswapfile                          " No swap files when editing please
+set directory=/tmp/                     " Set temporary directory (don't litter local dir with swp/tmp files)
+if v:version >= 703
+  set undofile
+  let &undodir=&directory
+endif
+
+set number
+set numberwidth=3                       " Set line number column width
+
+set colorcolumn=80                      " Set a dark grey column
 hi ColorColumn ctermbg=darkgrey
-set synmaxcol=200 " Reduce the max line length for syntax highlighting
-set nowrap " Don't wrap lines by default
-set showmatch " Show matching bracket under cursor
-set mat=2 "How many tenths of a second to blink
-set timeoutlen=500 " Time out map sequences slightly quicker
-set cursorline " highlight the currently focused line
-set backspace=indent,eol,start " make backspace work as in most other editors
 
 " Loudly point out trailing whitespace
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 
-" Window Heights
-set helpheight=10
-
-" Always show status bar
-set laststatus=2
-
-" Disable all gui options and use console dialogs
-set guioptions=c
-
-scriptencoding utf-8                    " UTF8 All day, every day
-set directory=/tmp/                     " Set temporary directory (don't litter local dir with swp/tmp files)
-
-" Set it to internal VIM Help
 set keywordprg=:help
 
-if v:version >= 703
-  " Set undofile.
-  set undofile
-  let &undodir=&directory
-endif
-
-set vb t_vb=                            " Disable visual bell
 set autoread                            " Set to auto read when a file is changed from the outside
-set nobackup                            " Do not create backup files when saving over existing files
-set nowritebackup                       " A little paranoid, but disable the writebackup function as well
-set noswapfile                          " No swap files when editing please
-
-" Ignore case on insert completion
-set infercase
+set infercase                           " Ignore case on insert completion
 set matchpairs+=<:>                     " Also match angle brackets
 
 " use indents of 2 spaces, and have them copied down lines:
@@ -73,12 +60,7 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-
-" Round indent by a multiple of shiftwidth in indent mode
 set shiftround
-
-set number
-set numberwidth=3                       " Set line number column width
 
 " WindowAndBufferManagement
 set splitbelow                          " Open new horizontal split windows below current
@@ -92,7 +74,6 @@ set wildignore+=*.o,*.a,*.so           " Ignore compiled binaries
 set wildignore+=*.jpg,*.png,*.gif      " Ignore images
 set wildignore+=*.pdf                  " Ignore PDF files
 set wildignore+=*.pyc,*.pyo            " Ignore compiled Python files
-set wildignore+=*.fam                  " Ignore compiled Falcon files
 
 " Search
 set incsearch                           " Incrementally highlight search match
@@ -100,75 +81,6 @@ set nohlsearch                          " Don't highlight search result.
 set wrapscan                            " Searches wrap around the end of the file
 set ignorecase                          " Ignore case in searches...
 set smartcase                           " ... unless there's an upper case letter
-
-
-"""""""""""""""""""""""
-" General Key Mappings
-"""""""""""""""""""""""
-
-" Map Leader: Reset from \ to ,
-let mapleader = ","
-
-" Yank from the cursor to the end of the line, to be consistent with C and D.
-nnoremap Y y$
-
-" Use `co` for quick changing settings
-nmap co =o
-
-" Quick toggle for paste mode
-nnoremap cop :<c-u>set paste!<cr>:set paste?<cr>
-
-" ExitInsertMode: Alternative keybinding
-imap jj <Esc>
-
-" Open a Quickfix window for the last search.
-nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-
-" open new tabs wtih ^t
-nmap <C-t> :tabnew<CR>
-
-"for vimgrep next and previous result
-nmap <c-Down> :cn<CR>
-nmap <c-Up> :cp<CR>
-
-" shortcuts for 3-way merge
-map <leader>1 :diffget LOCAL<CR>
-map <leader>2 :diffget BASE<CR>
-map <leader>3 :diffget REMOTE<CR>
-
-" Quick map for jumping into pre-filled substitute command
-nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>
-nmap <leader>S :%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>
-
-
-"""""""""""""""""""""""
-" Plugin settings
-"""""""""""""""""""""""
-
-" configure ack.vim to use the silver searcher, if present
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-cnoreabbrev Ack Ack!
-
-" Yanked from Gary. Kill all LSPs if they get confused.
-nnoremap g0 :ALEStopAllLSPs<cr>
-
-" Vim-ale handles TypeScript quickfix, so tell Tsuquyomi not to do it.
-let g:tsuquyomi_disable_quickfix = 1
-
-" Common setting for ruby debug
-let g:ruby_debugger_default_script = 'script/rails s'
-let g:ruby_debugger_spec_path = 'rspec'         " set Rspec path
-
-autocmd BufRead,BufNewFile *.md setf markdown
-autocmd BufRead,BufNewFile *.hbs setf html
-
-
-" Terraform
-let g:terraform_remap_spacebar=1
-
-
 
 " Ignore common globs that aren't really helpful most of the time
 set wildignore+=*/spec/reports/**
@@ -179,129 +91,72 @@ set wildignore+=*/tmp/**
 set wildignore+=*/neo4j/**
 set wildignore+=*/solr/**
 
+"""""""""""""""""""""""
+" General Key Mappings
+"""""""""""""""""""""""
+let mapleader = ","
 
-" FZF
-nmap // :BLines!<CR>
-nmap ?? :Rg!<CR>
-nmap <C-p> :Files!<CR>
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
 
+" Quick toggle for paste mode
+nnoremap cop :<c-u>set paste!<cr>:set paste?<cr>
+
+" ExitInsertMode: Alternative keybinding
+imap jj <Esc>
+
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+"for vimgrep next and previous result
+nmap <c-Down> :cn<CR>
+nmap <c-Up> :cp<CR>
+
+" Quick map for jumping into pre-filled substitute command
+nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>
+nmap <leader>S :%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>
 
 " Lazygit! https://github.com/jesseduffield/lazygit
-noremap <leader>g :tab term ++close lazygit<CR>
+nnoremap <leader>g :tab term ++close lazygit<CR>
 
+autocmd BufRead,BufNewFile *.md setf markdown
+autocmd BufRead,BufNewFile *.hbs setf html
 
-" Toggle color highlighting (chrisbra/Colorizer)
-noremap <leader>c :ColorToggle<CR>
+"""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""
 
+call plug#begin('~/.vim/plugged')
 
-" ALE configuration
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_set_highlights = 0
-let g:ale_linters = {
-      \ 'javascript': ['prettier'],
-      \ 'terraform': ['terraform'],
-      \ 'typescript': ['tsserver', 'eslint'],
-      \ 'typescriptreact': ['tsserver', 'eslint']
-      \ }
+source ~/.vim/plugins/repeat.vim
+source ~/.vim/plugins/surround.vim
+source ~/.vim/plugins/unimpaired.vim
+source ~/.vim/plugins/projectionist.vim
+source ~/.vim/plugins/quickfix-reflector.vim
+source ~/.vim/plugins/fzf.vim
+source ~/.vim/plugins/ack.vim
+source ~/.vim/plugins/airline.vim
+source ~/.vim/plugins/palenight.vim
+source ~/.vim/plugins/golden-ratio.vim
+source ~/.vim/plugins/editorconfig.vim
+source ~/.vim/plugins/gitgutter.vim
+source ~/.vim/plugins/textobj-user.vim
+source ~/.vim/plugins/textobj-rubyblock.vim
+source ~/.vim/plugins/textobj-xmlattr.vim
+source ~/.vim/plugins/rails.vim
+" source ~/.vim/plugins/rspec.vim
+source ~/.vim/plugins/typescript.vim
+source ~/.vim/plugins/jsx-pretty.vim
+source ~/.vim/plugins/tsuquyomi.vim
+source ~/.vim/plugins/test.vim
+source ~/.vim/plugins/terraform.vim
+source ~/.vim/plugins/ale.vim
+source ~/.vim/plugins/snippets.vim
+source ~/.vim/plugins/colorizer.vim
 
-let g:ale_fixers = {
-      \ 'javascript': ['prettier'],
-      \ 'python': ['black'],
-      \ 'terraform': ['terraform'],
-      \ 'typescript': ['prettier'],
-      \ 'typescriptreact': ['prettier']
-      \ }
+if has('nvim')
+  source ~/.vim/plugins/vimproc.vim
+endif
 
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_delay = 0
-let g:ale_set_quickfix = 0
-let g:ale_set_loclist = 0
-let g:ale_javascript_eslint_executable = 'eslint --cache'
-let g:ale_set_signs = 0
-let g:ale_set_highlights = 1
-
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-" TypeScript key mapping
-autocmd FileType typescript,typescriptreact map <buffer> <leader>t : <C-u>echo tsuquyomi#hint()<CR>
-autocmd FileType typescript,typescriptreact map <buffer> <leader>f :TsuSignatureHelp<CR>
-autocmd FileType typescript,typescriptreact map <buffer> <leader>qf :TsuQuickFix<CR>
-autocmd FileType typescript,typescriptreact map <buffer> <leader>d :TsuDefinition<CR>
-autocmd FileType typescript,typescriptreact map <buffer> <leader>D :TsuTypeDefinition<CR>
-
-" test runner keymaps
-" Rspec.vim mappings
-" Run !rspec on the current file
-"nnoremap <silent> <leader>R :exec '!rspec --color %'<CR>
-" let g:rspec_command = "!bundle exec rspec --color {spec}"
-" autocmd FileType ruby map <buffer> <leader>r :call RunCurrentSpecFile()<CR>
-" autocmd FileType ruby map <buffer> <leader>a :call RunAllSpecs()<CR>
-" autocmd FileType ruby map <buffer> <leader>s :call RunNearestSpec()<CR>
-" autocmd FileType ruby map <buffer> <leader>l :call RunLastSpec()<CR>
-" 
-" autocmd FileType javascript,javascriptreact,typescript,typescriptreact map <buffer> <leader>r :!npm run test --findRelatedTests %<CR>
-" autocmd FileType javascript,javascriptreact,typescript,typescriptreact map <buffer> <leader>a :!npm run test<CR>
-" 
-" autocmd FileType python map <buffer> <leader>r :!pytest %<CR>
-" autocmd FileType python map <buffer> <leader>a :!pytest<CR>
-
-" vim-test/vim-test
-let test#ruby#rspect#executable = "bundle exec rspec --color"
-let test#python#runner = "pytest"
-let test#python#pytest#options = "--condensed-warnings --color=yes --reuse-db"
-nmap <leader>tf :TestFile<CR>
-nmap <leader>tn :TestNearest<CR>
-nmap <leader>ta :TestSuite<CR>
-nmap <leader>tl :TestLast<CR>
-nmap <leader>tg :TestVisit<CR>
-
-let g:projectionist_heuristics = {
-    \   "Gemfile": {
-    \     "app/**/*.rb": {
-    \       "type": "source",
-    \       "alternate": "spec/{dirname}/{basename}_spec.rb",
-    \     },
-    \   },
-    \   "package.json": {
-    \     "*.js": {
-    \       "type": "source",
-    \       "alternate": ["{}.test.js", "{}.test.jsx"],
-    \     },
-    \     "*.jsx": {
-    \       "type": "source",
-    \       "alternate": ["{}.test.js", "{}.test.jsx"],
-    \     },
-    \     "*.test.js": {
-    \       "type": "test",
-    \       "alternate": ["{}.js", "{}.jsx"],
-    \     },
-    \     "*.test.jsx": {
-    \       "type": "test",
-    \       "alternate": ["{}.js", "{}.jsx"],
-    \     },
-    \     "*.ts": {
-    \       "type": "source",
-    \       "alternate": ["{}.test.ts", "{}.test.tsx"],
-    \     },
-    \     "*.tsx": {
-    \       "type": "source",
-    \       "alternate": ["{}.test.ts", "{}.test.tsx"],
-    \     },
-    \     "*.test.ts": {
-    \       "type": "test",
-    \       "alternate": ["{}.ts", "{}.tsx"],
-    \     },
-    \     "*.test.tsx": {
-    \       "type": "test",
-    \       "alternate": ["{}.ts", "{}.tsx"],
-    \     },
-    \   }
-    \ }
-
-" Snippets config
-let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
-let g:snipMate.snippet_version = 1
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['typescript'] = 'typescript,javascript-mocha'
+call plug#end()
+doautocmd User PlugLoaded
