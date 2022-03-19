@@ -41,6 +41,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " restart lang servers when they get confused
 nnoremap g0 :silent :CocRestart<CR>
+" close all floating windows when coc-vim fucks up
+nnoremap g9 :silent :call coc#float#close_all()<CR>
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
