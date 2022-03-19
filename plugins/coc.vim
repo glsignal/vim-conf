@@ -47,7 +47,7 @@ nnoremap g9 :silent :call coc#float#close_all()<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " format syntax
-nnoremap <leader>fs :silent Prettier<CR>
+nmap <leader>fs <Plug>(coc-format)
 
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gd <Plug>(coc-definition)
