@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
       \ 'coc-eslint',
       \ 'coc-prettier',
       \ 'coc-pyright',
+      \ 'coc-solargraph',
       \ 'coc-tsserver',
       \ ]
 

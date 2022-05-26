@@ -6,5 +6,6 @@
     "typescriptreact"
   ],
   "coc.preferences.jumpCommand": "edit",
-  "coc.preferences.renameFillCurrent": false
+  "coc.preferences.renameFillCurrent": false,
+  "solargraph.formatting": true
 }
