@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
       \ 'coc-eslint',
       \ 'coc-prettier',
       \ 'coc-pyright',
+      \ 'coc-snippets',
       \ 'coc-solargraph',
       \ 'coc-tsserver',
       \ ]
@@ -60,7 +61,7 @@ nmap <silent> <leader>rr <Plug>(coc-rename)
 nnoremap <leader>qf :CocAction<CR>
 
 " use <tab> for trigger completion and navigate to the next complete item
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
