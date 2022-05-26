@@ -151,7 +151,7 @@ source ~/.vim/plugins/jsx-pretty.vim
 source ~/.vim/plugins/coc.vim
 source ~/.vim/plugins/projectionist.vim
 source ~/.vim/plugins/quickfix-reflector.vim
-source ~/.vim/plugins/rails.vim
+" source ~/.vim/plugins/rails.vim
 source ~/.vim/plugins/repeat.vim
 " source ~/.vim/plugins/rspec.vim
 source ~/.vim/plugins/snippets.vim
