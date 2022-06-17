@@ -58,7 +58,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <leader>rr <Plug>(coc-rename)
 
 " quickfix current focused problem
-nnoremap <leader>qf :CocAction<CR>
+nmap <silent> <leader>qf <Plug>(coc-codeaction)
 
 " use <tab> for trigger completion and navigate to the next complete item
 inoremap <silent><expr> <TAB>
