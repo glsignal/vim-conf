@@ -7,5 +7,6 @@
   ],
   "coc.preferences.jumpCommand": "edit",
   "coc.preferences.renameFillCurrent": false,
+  "inlayHint.enable": false,
   "solargraph.formatting": true
 }
