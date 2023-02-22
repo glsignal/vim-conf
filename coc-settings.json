@@ -1,12 +1,13 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "[python]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "coc.preferences.formatOnSave": true
+  },
   "coc.preferences.jumpCommand": "edit",
   "coc.preferences.renameFillCurrent": false,
+  "suggest.noselect": true,
   "inlayHint.enable": false,
   "solargraph.formatting": true
 }
