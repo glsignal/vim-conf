@@ -5,9 +5,14 @@
   "[javascript][javascriptreact][typescript][typescriptreact]": {
     "coc.preferences.formatOnSave": true
   },
+  "typescript.preferences.importModuleSpecifier": "project-relative",
   "coc.preferences.jumpCommand": "edit",
   "coc.preferences.renameFillCurrent": false,
+  "coc.preferences.useQuickfixForLocations": true,
+  "eslint.experimental.useFlatConfig": true,
+  "python.formatting.provider": "black",
   "suggest.noselect": true,
   "inlayHint.enable": false,
-  "solargraph.formatting": true
+  "solargraph.formatting": true,
+  "snippets.ultisnips.pythonPrompt": false
 }
