@@ -43,7 +43,11 @@ set cursorline                          " highlight the currently focused line
 set backspace=indent,eol,start          " make backspace work as in most other editors
 set synmaxcol=200                       " Reduce the max line length for syntax highlighting
 set laststatus=2                        " Always show status bar
-set guioptions=c                        " Disable all gui options and use console dialogs
+
+
+if has("guioptions")
+  set guioptions=c                        " Disable all gui options and use console dialogs
+endif
 
 set nobackup                            " Do not create backup files when saving over existing files
 set nowritebackup                       " A little paranoid, but disable the writebackup function as well
