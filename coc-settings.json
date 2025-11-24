@@ -10,7 +10,7 @@
   "coc.preferences.renameFillCurrent": false,
   "coc.preferences.useQuickfixForLocations": true,
   "eslint.experimental.useFlatConfig": true,
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "ruff",
   "suggest.noselect": true,
   "inlayHint.enable": false,
   "solargraph.formatting": true,

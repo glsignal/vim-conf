@@ -44,9 +44,8 @@ set backspace=indent,eol,start          " make backspace work as in most other e
 set synmaxcol=200                       " Reduce the max line length for syntax highlighting
 set laststatus=2                        " Always show status bar
 
-
 if has("guioptions")
-  set guioptions=c                        " Disable all gui options and use console dialogs
+  set guioptions=c                      " Disable all gui options and use console dialogs
 endif
 
 set nobackup                            " Do not create backup files when saving over existing files
@@ -55,7 +54,11 @@ set noswapfile                          " No swap files when editing please
 set directory=/tmp/                     " Set temporary directory (don't litter local dir with swp/tmp files)
 if v:version >= 703
   set undofile
-  let &undodir=&directory
+  if has('nvim')
+    let &undodir=&directory . '/nvim'
+  else
+    let &undodir=&directory
+  endif
 endif
 
 set number
