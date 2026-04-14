@@ -136,7 +136,9 @@ nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>
 nmap <leader>S :%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>
 
 " Lazygit! https://github.com/jesseduffield/lazygit
-nnoremap <leader>g :tab term ++close lazygit<CR>
+" nnoremap <leader>g :tab term ++close lazygit<CR>
+
+nnoremap <leader>nt :execute ':tabnew +' . getcurpos()[1] . ' %'<CR>zz
 
 autocmd BufRead,BufNewFile *.md setf markdown
 autocmd BufRead,BufNewFile *.hbs setf html

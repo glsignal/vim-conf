@@ -4,7 +4,7 @@ let test#enabled_runners = ["ruby#rspec", "python#pytest", "javascript#vitest", 
 
 let test#ruby#rspec#executable = "bundle exec rspec --color"
 let test#python#runner = "pytest"
-let test#python#pytest#options = "--condensed-warnings --color=yes --reuse-db"
+" let test#python#pytest#options = "--condensed-warnings --color=yes --reuse-db"
 let test#javascript#jest#executable = "npx jest"
 " let test#javascript#vitest#executable = "npx vitest -c vitest/vitest.config.mts"
 

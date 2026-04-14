@@ -1,0 +1,54 @@
+snippet be "mocha before each block"
+beforeEach(() => {
+  ${1}
+});
+endsnippet
+
+snippet bea "mocha before all block"
+beforeAll(() => {
+  ${1}
+});
+endsnippet
+
+snippet af "mocha after each block"
+afterEach(() => {
+  ${1}
+});
+endsnippet
+
+snippet afa "mocha after all block"
+afterAll(() => {
+  ${1}
+});
+endsnippet
+
+snippet desc "mocha describe block"
+describe("${1}", () => {
+  ${2}
+});
+endsnippet
+
+snippet it "mocha test block"
+it("${1}", () => {
+	${2}
+});
+endsnippet
+
+snippet itp "mocha pending test block"
+it.todo("${1}");
+endsnippet
+
+snippet ita "mocha async test block"
+it("${1}", async () => {
+	${2}
+});
+endsnippet
+
+snippet ite "mocha each async test block"
+it.each\`
+${2}      | expected
+\${"val"}   | \${"val"}
+\`("${1} (\$$2)", async ({ $2, expected }) => {
+	${3}
+});
+endsnippet

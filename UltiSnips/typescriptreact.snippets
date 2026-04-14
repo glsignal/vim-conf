@@ -1,12 +1,15 @@
+extends typescript
+
 snippet rfc "react functional component"
-import React from "react";
 import type { FunctionComponent } from "react";
 
 interface Props {
 	${3}
 }
 
-const ${1:function_name}: FunctionComponent<Props> = (${2:props}) => {
+const ${1:function_name}: FunctionComponent<Props> = (${2:{}}) => {
 	${4}
 }
+
+export default $1
 endsnippet
