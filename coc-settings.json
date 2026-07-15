@@ -6,6 +6,7 @@
     "coc.preferences.formatOnSave": true
   },
   "typescript.preferences.importModuleSpecifier": "project-relative",
+  "tsserver.useLocalTsdk": true,
   "coc.preferences.jumpCommand": "edit",
   "coc.preferences.renameFillCurrent": false,
   "coc.preferences.useQuickfixForLocations": true,
@@ -14,5 +15,12 @@
   "suggest.noselect": true,
   "inlayHint.enable": false,
   "solargraph.formatting": true,
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "tsserver.tsdk": "/Users/glsignal/git/alasco-tech/alasco-app/frontend/node_modules/typescript/lib",
+  "eslint.debug": true,
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ]
 }
